@@ -638,7 +638,8 @@ def doc_model_eval():
     # sample_prob_decay = 0.05
 
     # model_path = "/home/easonnie/projects/FunEver/saved_models/08-26-15:13:35_simple_nn_doc/i(7000)_epoch(1)_(tra_score:0.9164416441644164|pr:0.4283778377837277|rec:0.8746624662466247|f1:0.575095052581864)"
-    model_path = "/home/easonnie/projects/FunEver/saved_models/08-26-15:46:10_simple_nn_doc_first_sent/i(9000)_epoch(1)_(tra_score:0.9212421242124212|pr:0.4299679967996279|rec:0.8818631863186318|f1:0.5780819247968391)"
+    # model_path = "/home/easonnie/projects/FunEver/saved_models/08-26-15:46:10_simple_nn_doc_first_sent/i(9000)_epoch(1)_(tra_score:0.9212421242124212|pr:0.4299679967996279|rec:0.8818631863186318|f1:0.5780819247968391)"
+    model_path = config.PRO_ROOT / "saved_models" / "nn_doc_selector" / "i(9000)_epoch(1)_(tra_score:0.9212421242124212|pr:0.4299679967996279|rec:0.8818631863186318|f1:0.5780819247968391)"
 
     dev_upstream_file = config.RESULT_PATH / "doc_retri_bls/docretri.basic.nopageview/dev.jsonl"
     # train_upstream_file = config.RESULT_PATH / "doc_retri_bls/docretri.basic.nopageview/train.jsonl"
@@ -694,7 +695,7 @@ def doc_model_eval():
     eval_iter = dev_biterator(dev_instances, shuffle=False, num_epochs=1, cuda_device=device_num)
     complete_upstream_dev_data = hidden_eval(model, eval_iter, complete_upstream_dev_data)
     common.save_jsonl(complete_upstream_dev_data,
-                      "/home/easonnie/projects/FunEver/saved_models/08-26-15:46:10_simple_nn_doc_first_sent/ablation_neural_doc.jsonl")
+                      config.PRO_ROOT / "saved_models" / "ablation_neural_doc.jsonl")
 
     disamb.enforce_disabuigation_into_retrieval_result_v1(complete_upstream_dev_data,
                                                           dev_data_list)
@@ -805,7 +806,7 @@ def utest_results_debug():
     #                                                             contain_first_sentence=contain_first_sentence)
 
     complete_upstream_dev_data = common.load_jsonl(
-        "/home/easonnie/projects/FunEver/saved_models/08-26-15:46:10_simple_nn_doc_first_sent/ablation_neural_doc.jsonl")
+        config.PRO_ROOT / "saved_models" / "ablation_neural_doc.jsonl")
     disamb.enforce_disabuigation_into_retrieval_result_v2(complete_upstream_dev_data,
                                                           dev_data_list, prob_sh=0.00005)
 
@@ -860,7 +861,7 @@ def utest_results():
     #                                                             contain_first_sentence=contain_first_sentence)
 
     complete_upstream_dev_data = common.load_jsonl(
-        "/home/easonnie/projects/FunEver/saved_models/08-26-15:46:10_simple_nn_doc_first_sent/ablation_neural_doc.jsonl")
+        config.PRO_ROOT / "saved_models" / "ablation_neural_doc.jsonl")
     disamb.enforce_disabuigation_into_retrieval_result_v2(complete_upstream_dev_data,
                                                           dev_data_list, prob_sh=0.0001)
 
@@ -891,7 +892,7 @@ def build_relatedness_for_train():
     # sample_prob_decay = 0.05
 
     # model_path = "/home/easonnie/projects/FunEver/saved_models/08-26-15:13:35_simple_nn_doc/i(7000)_epoch(1)_(tra_score:0.9164416441644164|pr:0.4283778377837277|rec:0.8746624662466247|f1:0.575095052581864)"
-    model_path = "/home/easonnie/projects/FunEver/saved_models/08-26-15:46:10_simple_nn_doc_first_sent/i(9000)_epoch(1)_(tra_score:0.9212421242124212|pr:0.4299679967996279|rec:0.8818631863186318|f1:0.5780819247968391)"
+    model_path = config.PRO_ROOT / "saved_models" / "nn_doc_selector" / "i(9000)_epoch(1)_(tra_score:0.9212421242124212|pr:0.4299679967996279|rec:0.8818631863186318|f1:0.5780819247968391)"
 
     dev_upstream_file = config.RESULT_PATH / "doc_retri_bls/docretri.basic.nopageview/dev.jsonl"
     # train
@@ -957,7 +958,7 @@ def build_relatedness_for_train():
     eval_iter = dev_biterator(dev_instances, shuffle=False, num_epochs=1, cuda_device=device_num)
     complete_upstream_dev_data = hidden_eval(model, eval_iter, complete_upstream_train_data)
     common.save_jsonl(complete_upstream_dev_data,
-                      "/home/easonnie/projects/FunEver/saved_models/08-26-15:46:10_simple_nn_doc_first_sent/extra_needed_training_data/dev_doc_list.jsonl")
+                     config.PRO_ROOT / "saved_models" / "dev_doc_list.jsonl")
 
     # disamb.enforce_disabuigation_into_retrieval_result_v1(complete_upstream_dev_data,
     #                                                       dev_data_list)

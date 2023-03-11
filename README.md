@@ -21,6 +21,7 @@ Previous version of pytorch can be find at [legacy pytorch](https://pytorch.org/
 ```bash
 source setup.sh
 bash ./scripts/prepare.sh
+ml load openjdk/1.8.0_265-b01-gcc-9.4.0
 ```
 The script will download all the required data, the auxiliary packages and files.
 

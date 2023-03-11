@@ -2,10 +2,11 @@ import os
 from pathlib import Path
 
 SRC_ROOT = Path(os.path.dirname(os.path.realpath(__file__)))
-PRO_ROOT = SRC_ROOT.parent
+PRO_ROOT = SRC_ROOT.parent.resolve()
 
 UTEST_ROOT = PRO_ROOT / "utest"
 DATA_ROOT = PRO_ROOT / "data"
+DATA_ROOT = DATA_ROOT.resolve()
 RESULT_PATH = PRO_ROOT / "results"
 
 WIKI_PAGE_PATH = DATA_ROOT / "wiki-pages"

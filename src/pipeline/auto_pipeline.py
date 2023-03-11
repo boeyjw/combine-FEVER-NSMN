@@ -22,6 +22,9 @@ import numpy as np
 import nn_doc_retrieval.disabuigation_training as disamb
 from nn_doc_retrieval import nn_doc_model
 
+import warnings
+warnings.filterwarnings("once")
+
 PIPELINE_DIR = config.RESULT_PATH / "pipeline_r_aaai_doc"
 
 default_model_path_dict: Dict[str, str] = {
@@ -104,36 +107,36 @@ def merge_nli_results(nli_r_list):
 
 default_steps = {
     's1.tokenizing': {
-        'do': True,
-        'out_file': 'None'  # if false, we will directly use the out_file, This out file for downstream
+        'do': False,
+        'out_file': PIPELINE_DIR / '2023_03_06_14:38:23_r' / 't_shared_task_dev.jsonl'  # if false, we will directly use the out_file, This out file for downstream
     },
     's2.1doc_retri': {
-        'do': True,
-        'out_file': 'None'  # if false, we will directly use the out_file, for downstream
+        'do': False,
+        'out_file': PIPELINE_DIR / '2023_03_06_14:38:23_r' / 'doc_retr_1_shared_task_dev.jsonl'  # if false, we will directly use the out_file, for downstream
     },
 
     's2.2.1doc_nn_retri': {
-        'do': True,
-        'out_file': 'None'
+        'do': False,
+        'out_file': PIPELINE_DIR / '2023_03_06_14:38:23_r' / 'nn_doc_list_1_shared_task_dev.jsonl'
     },
 
     's3.1sen_select': {
-        'do': True,
-        'out_file': 'None',
+        'do': False,
+        'out_file': PIPELINE_DIR / '2023_03_06_14:38:23_r' / 'dev_sent_score_1_shared_task_dev_docnum(10)_ensembled.jsonl',
         'ensemble': True,
     },
 
     's4.2doc_retri': {
-        'do': True,
-        'out_file': 'None'
+        'do': False,
+        'out_file': PIPELINE_DIR / '2023_03_06_14:38:23_r' / 'doc_retr_2_shared_task_dev.jsonl'
     },
     's5.2sen_select': {
-        'do': True,
-        'out_file': 'NOne'
+        'do': False,
+        'out_file': PIPELINE_DIR / '2023_03_06_14:38:23_r' / 'dev_sent_score_2_shared_task_dev.jsonl'
     },
     's6.nli': {
         'do': True,
-        'out_file': config.RESULT_PATH / "pipeline_r_aaai_doc/2018_09_02_17:11:42_r/nli_r_shared_task_dev_no_doc_scale:0.05.jsonl"
+        'out_file': PIPELINE_DIR / "pipeline_r_aaai_doc/2018_09_02_17:11:42_r/nli_r_shared_task_dev_no_doc_scale:0.05.jsonl"
     }
 }
 
