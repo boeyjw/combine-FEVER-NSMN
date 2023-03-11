@@ -103,6 +103,8 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-data/
-dep_packages/
-results/
+data
+dep_packages
+results
+other_resources
+saved_models
